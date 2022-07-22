@@ -1,0 +1,66 @@
+.create__resume {
+    /* background: url('https://cdn-icons-png.flaticon.com/512/52/52762.png') center center/cover no-repeat; */
+    height: 40;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    margin-top: 40px;
+    margin-bottom: 30px;
+  }
+  
+  /* .create__resume > h1 {
+    color: black;
+    font-size: 50px;
+    margin-top: -100px;
+  } */
+  
+  .create__resume > p {
+    margin-top: 8px;
+    color: black;
+    font-size: 32px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+      'Lucida Sans', Arial, sans-serif;
+  }
+  
+  /* .hero-btns {
+    margin-top: 32px;
+    
+  }
+  
+  .hero-btns .btn {
+    margin: 6px;
+    align-items: center;
+  } */
+
+ 
+
+  @media screen and (max-width: 960px) {
+    .hero-container > h1 {
+      font-size: 70px;
+      margin-top: -150px;
+    }
+  }
+  
+  
+  @media screen and (max-width: 768px) {
+    .hero-container > h1 {
+      font-size: 50px;
+      margin-top: -100px;
+    }
+  
+    .hero-container > p {
+      font-size: 30px;
+    }
+  
+    .btn-mobile {
+      display: block;
+      text-decoration: none;
+    }
+  
+    .btn {
+      width: 100%;
+    }
+  }

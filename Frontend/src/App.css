@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  outline: none;
+  color: inherit;
+  transition: all 0.5s;
+  font-family: "Montserrat",sans-serif;
+}
+
+body {
+  background-color: #eeeeee !important;
+}
+
+input,
+select,
+textarea {
+  background-color: transparent !important;
+  border-bottom: 1px solid #cac7c7;
+}
+
+.resume-section {
+  background-color: grey;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px #cac7c7;
+  
+}
+
+.declaration{
+  text-align: right;
+}
+
+.user-social-icons > a {
+  color: transparent;
+  font-size: 1.6rem;
+}
+
+.card-body{
+  background: url('https://cdn.pixabay.com/photo/2021/07/06/19/26/drops-6392473__340.jpg');
+}
+
+.login{
+  background: url('https://t4.ftcdn.net/jpg/01/19/11/55/360_F_119115529_mEnw3lGpLdlDkfLgRcVSbFRuVl6sMDty.jpg');
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
