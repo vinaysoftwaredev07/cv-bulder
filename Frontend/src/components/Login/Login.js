@@ -4,19 +4,22 @@ import Input from '../Input'
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { AuthContext } from '../../App'
+import { AuthContext } from '../../App';
+import { validateEmail } from '../../helpers/validation';
 
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 const Login = () => {
     const authContext = useContext(AuthContext);
     const history = useHistory();
     const [userInfo, setUserInfo] = useState({
         email: '',
+        username: '',
         password: ''
     })
 
     const handleChange = (event) => {
-        const { value, name } = event.target
+        let { value, name } = event.target
         setUserInfo(prevValue => {
             return({
                 ...prevValue,
@@ -28,24 +31,22 @@ const Login = () => {
 const handleSignInClick = async (event) => {
         event.preventDefault();
         try {
-            const res = await axios.post('/user/login', JSON.stringify(userInfo), {
+            const res = await axios.post(`${BASE_URL}/user/login`, JSON.stringify(userInfo), {
                 headers: {
                     'Content-Type': 'application/json'
                 }
             })
-            localStorage.setItem("token", res.data.token)
-            localStorage.setItem("user",JSON.stringify(res.data.user))
-            authContext.userDispatch({ type: "USER_LOGIN", payload: res.data})
+            localStorage.setItem("token", res.data.token);
+            localStorage.setItem("user",JSON.stringify(res.data.user));
+            authContext.userDispatch({ type: "USER_LOGIN", payload: res.data});
 
             toast.success("Signed in successful!", {
                 className: "success-toast",
                 autoClose: 3000,
                 position: toast.POSITION.BOTTOM_RIGHT
             })
-            history.push('/create_resume');
-            //console.log(res)
+            history.push('/dashboard');
         } catch (error) {
-            //console.error(error)
                  toast.error(error.response.data.msg, {
                 className: "error-toast",
                 position: toast.POSITION.TOP_RIGHT,
@@ -65,6 +66,13 @@ return (
                         value={userInfo.email}
                         className="form-control form-control-lg mt-5" 
                         placeholder="Enter email address" 
+                        onChange={handleChange} />
+                    <Input 
+                        type="text" 
+                        name="username"
+                        value={userInfo.username}
+                        className="form-control form-control-lg mt-3" 
+                        placeholder="Enter username" 
                         onChange={handleChange} />
                     <Input 
                         type="password" 

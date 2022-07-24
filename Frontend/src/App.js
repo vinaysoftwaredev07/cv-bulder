@@ -9,32 +9,6 @@ import { useReducer,createContext } from "react";
 
 export const AuthContext = createContext()
 
-// const Routing = () => {
-//   const {user} = useContext (AuthContext);
-// return (
-//   <Switch>
-//       <Route exact path="/">
-//         <Landing />
-//       </Route>
-//       <Route path="/signin">
-//         <Login />{user ? <Landing/> : <Login /> }
-//       </Route>
-//       <Route path="/signup">
-//         <Register />{user ? <Landing/> : <Register /> }  
-//       </Route>
-//       <Route path="/create_resume"> {user ? <CreateResume/> : <Register /> }
-//         <CreateResume />
-//       </Route>
-//       <Route path="/create"> {user ? <FormComponent /> : <Register /> }
-//         < FormComponent/>
-//       </Route>
-//       <Route path="/view_resume/:userid">
-//         <ResumeComponent />
-//       </Route>
-//     </Switch>
-// )
-// }
-
 function App() {
   const [state,dispatch] =useReducer(reducer, initialState)
   

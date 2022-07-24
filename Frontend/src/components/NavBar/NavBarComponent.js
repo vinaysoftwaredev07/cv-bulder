@@ -27,7 +27,7 @@ const NavBarComponent = () => {
         <Router>
  <Navbar bg="dark" variant={"dark"} expand="lg">
   <Container>
-    <Navbar.Brand as={Link} to ="/">Resume Genertor</Navbar.Brand>
+    <Navbar.Brand as={Link} to ="/">CV Builder</Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
 

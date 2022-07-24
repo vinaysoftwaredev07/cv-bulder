@@ -5,9 +5,14 @@ const jwt = require('jsonwebtoken')
 const userController ={
     register: async (req,res) =>{
         try{
-            const {name,email,password} = req.body;
+            const {username, email, phone, password} = req.body;
 
-            const user= await User.findOne({email})
+            let user;
+            if(email){
+                user = await User.findOne({email});
+            }else if(username){
+                user = await User.findOne({username});
+            }
 
             if(user) return res.status(400).json({message: "This Email ID already exists"})
 
@@ -17,7 +22,10 @@ const userController ={
             //password encryption
             const passwordHash = await bcrypt.hash(password, 10)
             const newUser = new User({
-                name,email,password:passwordHash
+                username,
+                email,
+                phone,
+                password:passwordHash
             }) 
 
             await newUser.save()
@@ -36,6 +44,7 @@ const userController ={
         res.json({accesstoken})
 
         }catch(err){
+            console.log(err);
            return  res.status(500).json({message: err.message})
         }
         
@@ -62,8 +71,20 @@ const userController ={
     },
     login: async (req,res)=>{
         try{
-            const {email,password} = req.body
-            const user = await User.findOne({email})
+            const {email, username, password} = req.body
+
+            let user;
+            let select = {
+                email: 1, 
+                username: 1,
+                phone: 1,
+                password: 1
+            }
+            if(email){
+                user = await User.findOne({email}. select);
+            }else if(username){
+                user = await User.findOne({username}, select);
+            }
 
             if(!user) return res.status(400).json({msg: "User doesnot exit"})
 
@@ -78,7 +99,8 @@ const userController ={
                 httpOnly: true,
                 path: '/user/refresh_token'
             })
-            res.json({accesstoken})
+            user.password = undefined;
+            res.json({token: accesstoken, user})
 
         }catch(err){
             return  res.status(500).json({message: err.message})
@@ -100,6 +122,13 @@ const userController ={
             res.json(user)
         }catch(err){
             return  res.status(500).json({message: err.message})
+        }
+    },
+    socialLogin: async(req, res) => {
+        try{
+            
+        }catch(err){
+            console.log(err);
         }
     }
 

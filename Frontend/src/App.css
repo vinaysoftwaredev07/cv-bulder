@@ -37,16 +37,16 @@ textarea {
 }
 
 .card-body{
-  background: url('https://cdn.pixabay.com/photo/2021/07/06/19/26/drops-6392473__340.jpg');
+  /*background: url('https://cdn.pixabay.com/photo/2021/07/06/19/26/drops-6392473__340.jpg');*/
 }
 
 .login{
-  background: url('https://t4.ftcdn.net/jpg/01/19/11/55/360_F_119115529_mEnw3lGpLdlDkfLgRcVSbFRuVl6sMDty.jpg');
+  /*background: url('https://t4.ftcdn.net/jpg/01/19/11/55/360_F_119115529_mEnw3lGpLdlDkfLgRcVSbFRuVl6sMDty.jpg');*/
 }
 
 .vertical-center {
   margin: 0;
-  position: absolute;
+  /*position: absolute;*/
   top: 50%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);

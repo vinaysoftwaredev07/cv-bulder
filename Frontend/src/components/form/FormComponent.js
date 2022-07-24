@@ -364,8 +364,9 @@ const FormComponent = ({ history }) => {
   // sum up all the information into one object
   const handleUserResumeData = (e) => {
     e.preventDefault();
+    const BASE_URL = process.env.REACT_APP_API_URL;
     axios
-      .post("/api", {
+      .post(`${BASE_URL}/api`, {
         userFirstName,
         userSecondName,
         userGender,
@@ -435,7 +436,8 @@ const FormComponent = ({ history }) => {
       });
   };
   return (
-    <Container className="mt-5 mb-2">
+    <Container className="row">
+      <div className="col-md-6">
       <Form className="form-section">
         <h1 className="text-dark font-weight-bold py-3">Personal Details</h1>
         <Form.Row>
@@ -590,86 +592,10 @@ const FormComponent = ({ history }) => {
             />
           </FormGroup>
         </Form.Row>
-        {/* <h1 className="text-dark font-weight-bold py-4">Social Detail</h1>
-        <Form.Row>
-          <FormGroup as={Col} sm={12} md={4}>
-            <FormLabel>Social Website</FormLabel>
-            <FormControl
-              as="select"
-              onChange={handleFirstUserProfileWebsite}
-              value={userFirstProfileWebsite}
-              required
-            >
-              <option value="GitHub">GitHub</option>
-              <option value="LinkedIn">LinkedIn</option>
-              <option value="Personal Website">Portfolio Website</option>
-            </FormControl>
-          </FormGroup>
-          <FormGroup as={Col} sm={12} md={4}>
-            <FormLabel>Username</FormLabel>
-            <FormControl
-              type="text"
-              placeholder="e.g johnDoe123"
-              onChange={handleUserGitHubProfileName}
-              value={userGitHubProfileName}
-              required
-            />
-          </FormGroup>
-        </Form.Row> */}
-        {/* <Form.Row>
-          <FormGroup as={Col} sm={12} md={4}>
-            <FormLabel>Social Website</FormLabel>
-            <FormControl
-              as="select"
-              onChange={handleSecondUserProfileWebsite}
-              value={userSecondProfileWebsite}
-              required
-            >
-              <option value="LinkedIn">LinkedIn</option>
-              <option value="GitHub">GitHub</option>
-              <option value="Portfolio Website">Portfolio Website</option>
-            </FormControl>
-          </FormGroup>
-          <FormGroup as={Col} sm={12} md={4}>
-            <FormLabel>Username</FormLabel>
-            <FormControl
-              type="text"
-              placeholder="e.g johnDoe123"
-              onChange={handleUserLinkedInProfileName}
-              value={userLinkedInProfileName}
-              required
-            />
-          </FormGroup>
-        </Form.Row>
-        <Form.Row>
-          <FormGroup as={Col} sm={12} md={4}>
-            <FormLabel>Social Website</FormLabel>
-            <FormControl
-              as="select"
-              onChange={handleThirdUserProfileWebsite}
-              value={userThirdProfileWebsite}
-              required
-            >
-              <option value="Portfolio Website">Portfolio Website</option>
-              <option value="GitHub">GitHub</option>
-              <option value="LinkedIn">LinkedIn</option>
-            </FormControl>
-          </FormGroup>
-          <FormGroup as={Col} sm={12} md={4}>
-            <FormLabel>Username</FormLabel>
-            <FormControl
-              type="text"
-              placeholder="johnDoe.com"
-              onChange={handleUserPersonalWebsiteLink}
-              value={userPersonalWebsiteLink}
-              required
-            />
-          </FormGroup> */}
-        {/* </Form.Row> */}
         <h1 className="text-dark font-weight-bold py-4">
           Educational Details
         </h1>
-{/* 12th Standard  */}      
+      {/* 12th Standard  */}      
         <Form.Row>
           <FormGroup as={Col} sm={12} md={6}>
             <FormLabel><b>High School Degree </b></FormLabel>
@@ -1123,6 +1049,10 @@ Professional Experience{" "}
         </div>
         {/* <div className="vertical-center"> <button type="button" onClick={handleUserResumeData}>Generate CV</button> </div> */}
       </Form>
+      </div>
+      <div className="col-md-6">
+        <p>Resume Preview with Template</p>
+      </div>
     </Container>
   );
 };

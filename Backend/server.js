@@ -34,6 +34,13 @@ app.get("/api/:id", async (req, res) => {
   res.send({ success: true, resumeData: data });
 });
 
+app.put("/api/:id", async (req, res) => {
+  const reqData = req.body; 
+  // data validation serverside
+  const data = await UserResumeData.findOneAndUpdate(req.params.id, reqData);
+  res.send({ success: true, resumeData: data });
+});
+
 const PORT = process.env.PORT || 5000
 
 if(process.env.NODE_ENV === 'production'){
