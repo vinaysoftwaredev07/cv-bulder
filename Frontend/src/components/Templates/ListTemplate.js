@@ -6,15 +6,23 @@ import {
 import Routing from '../Routing/Routing'
 import { AuthContext } from '../../App'
 import { toast } from 'react-toastify';
-import axios from 'axios'
+import axios from 'axios';
+import Button from '../Button'
+import { useHistory } from 'react-router-dom'
 
 
 const BASE_URL = process.env.REACT_APP_API_URL;
 
 const ListTemplate = () => {
+    const history = useHistory();
     const authContext = useContext(AuthContext);
 
     let [ templates, setTemplatesData ] = useState([]);
+
+    const onChangeSelectTemplate = (id) => {
+        history.push('/create/'+id);
+    }
+
 
     useEffect(async () => {
       // Get template for selection
@@ -32,6 +40,7 @@ const ListTemplate = () => {
                 autoClose: 3000,
                 position: toast.POSITION.BOTTOM_RIGHT
             })
+            
             setTemplatesData(res.data.template);
         } catch (error) {
             console.log(error);
@@ -47,11 +56,18 @@ const ListTemplate = () => {
         <div>
             <p>List Template</p>
 
+            <div className="row">
             {
                 templates?.map((template) => {
-                    { console.log(template) }
+                    return (
+                        <div className="col-md-3">
+                            <p>{template.template_name}</p>
+                            <Button onClick={ () => onChangeSelectTemplate(template._id) } >Select Template</Button>
+                        </div>
+                    )
                 })
             }
+            </div>
         </div>   
     )
 }
