@@ -1,68 +1,64 @@
 const mongoose = require("mongoose");
 
 const userResumeSchema = mongoose.Schema({
-  userFirstName: String,
-  userSecondName: String,
-  userGender: String,
-  userDob: String,
-  userProfession: String,
-  userLocation: String,
-  userPhoneNumber: String,
-  userEmail: String,
-  userHouseAddress: String,
-  userNationality: String,
-  userMaritial: String,
-  userHobbies: String,
-  userLanguages: String,
-  userProfileDescription: String,
-  userFirstProfileWebsite: String,
-  userGitHubProfileName: String,
-  userSecondProfileWebsite: String,
-  userLinkedInProfileName: String,
-  userThirdProfileWebsite: String,
-  userPersonalWebsiteLink: String,
-  userHighSchoolDegreeName: String,
-  userHighSchoolName: String,
-  userHighSchoolStartingDate: String,
-  userHighSchoolEndingDate: String,
-  userHighSchoolExperience: String,
-  userPercentage: String,
-  userPercentageOne: String,
-  userPercentageTwo: String,
-  userCollegeDegreeName: String,
-  userCollegeName: String,
-  userCollegeStartingDate: String,
-  userCollegeEndingDate: String,
-  userCollegeExperience: String,
-  userBachelorDegreeName: String,
-  userUniversityName: String,
-  userBachelorStartingDate: String,
-  userBachelorEndingDate: String,
-  userUniversityExperience: String,
-  userProjectTitle: String,
-  userProjectDuration: String,
-  userProjectRole: String,
-  userProjectDescription: String,
-  user1stExperience: String,
-  user1stCompanyName: String,
-  user1stExperienceStartingDate: String,
-  user1stExperienceEndingDate: String,
-  userKey: String,
-  user1stCompanyExperience: String,
-  user2ndExperience: String,
-  user2ndCompanyName: String,
-  user2ndExperienceStartingDate: String,
-  user2ndExperienceEndingDate: String,
-  user2ndCompanyExperience: String,
-  userKeyOne: String,
-  user3rdExperience: String,
-  user3rdCompanyName: String,
-  user3rdExperienceStartingDate: String,
-  user3rdExperienceEndingDate: String,
-  user3rdCompanyExperience: String,
-  userSkills: String,
-  userDeclaration: String
-  
+  personalDetails : {
+      type: mongoose.Schema({
+        name: { type: String, required: true },
+        email: { type: String, required: true },
+        phone: { type: String, required: true },
+        location: { type: String, required: true },
+        skills: { type: String },
+        summary: { type: String },
+        wantedJobTitle: { type: String }
+      }), 
+      required: true
+  },
+  educationalCount: {
+    type: Number
+  },
+  educationalDetails: {
+    type: mongoose.Schema({
+      edu: { type: Object },
+      eduDesc: { type: Object },
+      eduStartDate: { type: Object },
+      eduEndDate: { type: Object },
+      qual: { type: Object },
+    }),
+  },
+  educationTemplate: { type: Array },
+  projectCount: {
+    type: Number
+  },
+  projectDetails: {
+    type: mongoose.Schema({
+      projectTitles: { type: Object },
+      projectDesc: { type: Object },
+      projectStartDate: { type: Object },
+      projectEndDate: { type: Object },
+    }),
+  },
+  projectTemplate: { type: Array },
+  employementCount: {
+    type: Number
+  },
+  employementDetails: {
+    type: mongoose.Schema({
+      emp: { type: Object },
+      jobDesc: { type: Object },
+      jobStartDate: { type: Object },
+      jobEndDate: { type: Object },
+      jobTitles: { type: Object },
+    }),
+  },
+  employmentTemplate: { type: Array },
+  cvType: { type: String }, 
+  userId:
+  {
+      type: mongoose.Schema.Types.ObjectId, 
+      ref: 'User',
+      required: true
+  },
+  isDeleted: { type: Boolean, default: false }
 });
 
 const UserResumeSchema = mongoose.model("UserResumeData", userResumeSchema);

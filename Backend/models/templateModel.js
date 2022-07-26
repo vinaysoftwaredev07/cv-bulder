@@ -1,30 +1,18 @@
 const mongoose= require('mongoose')
 const  templateSchema=new mongoose.Schema(
     {
-        username:
+        template_name:
         {
             type: String,
             required: true,
             trim: true
         },
-        phone:
+        template_type:
         {
             type: String,
             required: false,
             trim: true,
-            unique: true
         },
-        email:
-        {
-            type: String,
-            required: true,
-            unique: true
-        },
-        password:
-        {
-            type: String,
-            required: true
-        }
     },
     {
         timestamps:true
