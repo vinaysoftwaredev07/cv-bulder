@@ -1,11 +1,10 @@
-import React, { useState, useContext,useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import Button from '../Button';
 import Input from '../Input'
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../App';
-import { validateEmail } from '../../helpers/validation';
 
 const BASE_URL = process.env.REACT_APP_API_URL;
 
@@ -47,7 +46,7 @@ const handleSignInClick = async (event) => {
             })
             history.push('/dashboard');
         } catch (error) {
-                 toast.error(error.response.data.msg, {
+            toast.error(error.response.data.msg, {
                 className: "error-toast",
                 position: toast.POSITION.TOP_RIGHT,
                 autoClose: 3000
@@ -66,13 +65,6 @@ return (
                         value={userInfo.email}
                         className="form-control form-control-lg mt-5" 
                         placeholder="Enter email address" 
-                        onChange={handleChange} />
-                    <Input 
-                        type="text" 
-                        name="username"
-                        value={userInfo.username}
-                        className="form-control form-control-lg mt-3" 
-                        placeholder="Enter username" 
                         onChange={handleChange} />
                     <Input 
                         type="password" 

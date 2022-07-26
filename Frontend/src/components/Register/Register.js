@@ -3,7 +3,7 @@ import Button from '../Button'
 import Input from '../Input'
 import { Link, useHistory } from 'react-router-dom'
 import axios from 'axios'
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { googleAuthProvider, facebookAuthProvider } from '../../config/authMethod';
 import socialMediaAuth from '../../service/auth';

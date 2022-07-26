@@ -1,11 +1,10 @@
 import React from "react";
-import "./Landing.css";
 import { Link } from "react-router-dom";
 import Button from "../Button";
-import { useContext } from "react";
+import { useContext,useEffect } from "react";
 import { AuthContext } from '../../App'
 
-const Landing = ()=> {
+const TemplateData = ()=> {
   const authContext = useContext(AuthContext)
 return (
 <div className='hero-container'>
@@ -33,4 +32,4 @@ return (
   
 }
 
-export default Landing;
+export default TemplateData;

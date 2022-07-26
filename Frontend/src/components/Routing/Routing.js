@@ -1,7 +1,5 @@
-import React, { useEffect, useContext } from 'react'
-import { Switch, Route, useHistory } from 'react-router-dom'
-import FormComponent from '../form/FormComponent';
-import ResumeComponent from "../resume/ResumeComponent"
+import React, { useContext } from 'react'
+import { Switch, Route } from 'react-router-dom'
 import { AuthContext } from '../../App'
 import Landing from '../Landing/Landing';
 import Login from '../Login/Login';
@@ -9,21 +7,11 @@ import Register from '../Register/Register';
 import CreateResume from '../CreateResume/CreateResume';
 import ListTemplate from '../Templates/ListTemplate';
 import AuthRoute from './AuthRoute';
-
+import TemplateData from '../resume/TemplateData';
 
 const Routing = () => {
-    const history = useHistory();
     const authContext = useContext(AuthContext)
-    console.log("fdsfdsfsdfsdfdsfsdfsdf");
-    console.log(authContext);
-    useEffect(() => {
-        if (!authContext.userState.isAuthenticated) {
-            history.push('/')
-        }
-    },[history, authContext.userState.isAuthenticated])
     
-    
-
     return (
         <Switch>
             <Route path='/' exact component ={Landing}>
@@ -33,12 +21,11 @@ const Routing = () => {
 
             <Route path="/signup" component={Register}></Route>
 
-            <AuthRoute path="/create/:id"  component={FormComponent}>
-            </AuthRoute>
-            <AuthRoute path="/dashboard"  component={CreateResume} >
+            <AuthRoute path="/create/:template"  component={TemplateData} />
+
+            <AuthRoute path="/edit/:cv_id"  component={TemplateData} />
             
-            </AuthRoute>
-            <AuthRoute path="/view_resume/:id" exact component={ResumeComponent} />
+            <AuthRoute path="/dashboard"  component={CreateResume} />
 
             <AuthRoute path="/template-list" component={ListTemplate} />
             
